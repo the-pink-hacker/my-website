@@ -1,10 +1,14 @@
 :root {
 	--main-bg-color: white;
+	--main-text-color: black;
 
 	--sidebar-bg-color: rgb(41, 42, 43);
 	--sidebar-button-bg-color-hover: white;
 	--sidebar-button-text-color: white;
 	--sidebar-button-text-color-hover: black;
+
+	--outline-link-text-color-hover: white;
+	--outline-link-bg-color-hover: rgb(47, 49, 51);
 }
 
 body {
@@ -17,7 +21,7 @@ body {
 	position: relative;
 	z-index: 1;
 	min-height: 100vh;
-	max-width: 10%;
+	width: 12.5%;
 	background-color: var(--sidebar-bg-color);
 	-webkit-touch-callout: none;	/* iOS Safari */
 	-webkit-user-select: none;		/* Safari */
@@ -49,8 +53,9 @@ body {
 	min-height: 100%;
 	right: 0px;
 	top: 0px;
-	width: 85%;
+	width: 82.5%;
 	margin: 0 2.5%;
+	color: var(--main-text-color);
 }
 
 .main h1 {
@@ -59,4 +64,20 @@ body {
 
 .main p {
 	font-size: 1.5em;
+	margin: 0 0 8px 0;
+}
+
+.outline-link {
+	display: block;
+	color: var(--main-text-color);
+	text-decoration: none;
+	text-transform: capitalize;
+	font-size: 2em;
+	font-weight: bold;
+	width: max-content;
+	padding: 8px;
+}
+.outline-link:hover {
+	background-color: var(--outline-link-bg-color-hover);
+	color: var(--outline-link-text-color-hover);
 }
