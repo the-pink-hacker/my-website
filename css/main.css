@@ -1,0 +1,47 @@
+:root {
+	--main-bg-color: white;
+
+	--sidebar-bg-color: rgb(41, 42, 43);
+	--sidebar-button-bg-color-hover: white;
+	--sidebar-button-text-color: white;
+	--sidebar-button-text-color-hover: black;
+}
+
+body {
+	margin: 0px;
+	height: 100%;
+	background-color: var(--main-bg-color);
+}
+
+.sidebar {
+	position: relative;
+	z-index: 1;
+	min-height: 100vh;
+	max-width: 15%;
+	background-color: var(--sidebar-bg-color);
+}
+
+/* Sidebar link */
+.sidebar a {
+	min-width: 90%;
+	padding: 8px 0 8px 10%;
+	font-size: 2em;
+	font-weight: bold;
+	text-transform: capitalize;
+	text-decoration: none;
+	color: var(--sidebar-button-text-color);
+	float: left;
+}
+.sidebar a:hover {
+	background-color: var(--sidebar-button-bg-color-hover);
+	color: var(--sidebar-button-text-color-hover);
+}
+
+.main {
+	position: absolute;
+	min-height: 100%;
+	right: 0px;
+	top: 0px;
+	width: 82.5%;
+	margin-left: 2.5%;
+}
