@@ -17,13 +17,19 @@ body {
 	position: relative;
 	z-index: 1;
 	min-height: 100vh;
-	max-width: 15%;
+	max-width: 10%;
 	background-color: var(--sidebar-bg-color);
+	-webkit-touch-callout: none;	/* iOS Safari */
+	-webkit-user-select: none;		/* Safari */
+	-khtml-user-select: none;		/* Konqueror HTML */
+	-moz-user-select: none;			/* Old versions of Firefox */
+	-ms-user-select: none;			/* Internet Explorer/Edge */
+	user-select: none;
 }
 
 /* Sidebar link */
 .sidebar a {
-	min-width: 90%;
+	width: 90%;
 	padding: 8px 0 8px 10%;
 	font-size: 2em;
 	font-weight: bold;
@@ -31,6 +37,7 @@ body {
 	text-decoration: none;
 	color: var(--sidebar-button-text-color);
 	float: left;
+	overflow: hidden;
 }
 .sidebar a:hover {
 	background-color: var(--sidebar-button-bg-color-hover);
@@ -42,6 +49,14 @@ body {
 	min-height: 100%;
 	right: 0px;
 	top: 0px;
-	width: 82.5%;
-	margin-left: 2.5%;
+	width: 85%;
+	margin: 0 2.5%;
+}
+
+.main h1 {
+	text-transform: capitalize;
+}
+
+.main p {
+	font-size: 1.5em;
 }
