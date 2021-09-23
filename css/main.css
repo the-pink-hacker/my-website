@@ -8,19 +8,21 @@
 	--sidebar-button-text-color-hover: black;
 
 	--outline-link-text-color-hover: white;
-	--outline-link-bg-color-hover: rgb(47, 49, 51);
+	--outline-link-bg-color: rgb(243, 241, 241);
 }
 
 body {
 	margin: 0px;
 	height: 100%;
 	background-color: var(--main-bg-color);
+	display: flex;
 }
 
 .sidebar {
 	position: relative;
 	z-index: 1;
 	min-height: 100vh;
+	height: 100%;
 	width: 12.5%;
 	background-color: var(--sidebar-bg-color);
 	-webkit-touch-callout: none;	/* iOS Safari */
@@ -29,6 +31,8 @@ body {
 	-moz-user-select: none;			/* Old versions of Firefox */
 	-ms-user-select: none;			/* Internet Explorer/Edge */
 	user-select: none;
+	display: block;
+	margin-right: 2.5%;
 }
 
 /* Sidebar link */
@@ -40,21 +44,40 @@ body {
 	text-transform: capitalize;
 	text-decoration: none;
 	color: var(--sidebar-button-text-color);
-	float: left;
+	display: flex;
 	overflow: hidden;
+	z-index: 1;
+	transition: color 0.25s ease-in-out;
 }
 .sidebar a:hover {
-	background-color: var(--sidebar-button-bg-color-hover);
 	color: var(--sidebar-button-text-color-hover);
+	transition: color 0.25s ease-in-out;
+}
+.sidebar a::before {
+	content: "";
+	height: 1em;
+	width: 0%;
+	background-color: transparent;
+	z-index: -1;
+	position: absolute;
+	padding: 16px 0 8px 10%;
+	left: 0;
+	transform: translateY(-8px);
+	overflow: hidden;
+	transition: all 0.25s ease-in-out;
+}
+.sidebar a:hover::before {
+	background-color: var(--sidebar-button-bg-color-hover);
+	transition: all 0.25s ease-in-out;
+	width: 100%;
 }
 
 .main {
-	position: absolute;
+	position: relative;
 	min-height: 100%;
-	right: 0px;
-	top: 0px;
-	width: 82.5%;
-	margin: 0 2.5%;
+	width: max-content;
+	max-width: 82.5%;
+	margin-right: 2.5%;
 	color: var(--main-text-color);
 }
 
@@ -75,7 +98,7 @@ body {
 	font-size: 2em;
 	font-weight: bold;
 	width: max-content;
-	padding: 8px;
+	padding: 8px 16px;
 }
 .outline-link:hover {
 	background-color: var(--outline-link-bg-color-hover);
