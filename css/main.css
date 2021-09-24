@@ -9,7 +9,7 @@
 	--sidebar-button-hover-animation: 0.5s;
 
 	--outline-link-text-color-hover: white;
-	--outline-link-bg-color: rgb(243, 241, 241);
+	--outline-link-bg-color-hover: black;
 }
 
 body {
@@ -23,7 +23,7 @@ body {
 	position: relative;
 	z-index: 1;
 	min-height: 100vh;
-	height: 100%;
+	height: auto;
 	width: 12.5%;
 	background-color: var(--sidebar-bg-color);
 	-webkit-touch-callout: none;	/* iOS Safari */
@@ -88,7 +88,7 @@ body {
 
 .main p {
 	font-size: 1.5em;
-	margin: 0 0 8px 0;
+	margin: 16px;
 }
 
 .outline-link {
@@ -99,7 +99,7 @@ body {
 	font-size: 2em;
 	font-weight: bold;
 	width: max-content;
-	padding: 8px 16px;
+	margin: 8px;
 }
 .outline-link:hover {
 	background-color: var(--outline-link-bg-color-hover);
