@@ -16,6 +16,7 @@
 body {
 	margin: 0px;
 	height: 100%;
+	width: 100%;
 	background-color: var(--main-bg-color);
 	display: flex;
 }
@@ -82,8 +83,7 @@ body {
 .main {
 	position: relative;
 	min-height: 100%;
-	width: max-content;
-	max-width: 82.5%;
+	width: 82.5%;
 	margin-right: 2.5%;
 	color: var(--main-text-color);
 	-webkit-animation: fadein var(--main-fadein-animation); /* Safari, Chrome and Opera > 12.1 */
@@ -137,6 +137,11 @@ body {
 	background-color: var(--outline-link-bg-color-hover);
 	color: var(--outline-link-text-color-hover);
 	transition: all var(--sidebar-button-hover-animation) ease-in-out;
+}
+
+header {
+	text-align: center;
+	font-size: 1.5em;
 }
 
 .outline-link {
