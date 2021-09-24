@@ -91,6 +91,20 @@ body {
 	margin: 16px;
 }
 
+/* Inline link */
+.main * a {
+	color: var(--main-text-color);
+	font-size: 1em;
+	font-weight: bold;
+	transition: all var(--sidebar-button-hover-animation) ease-in-out;
+	text-decoration: none;
+}
+.main * a:hover {
+	background-color: var(--outline-link-bg-color-hover);
+	color: var(--outline-link-text-color-hover);
+	transition: all var(--sidebar-button-hover-animation) ease-in-out;
+}
+
 .outline-link {
 	display: block;
 	color: var(--main-text-color);
@@ -100,8 +114,11 @@ body {
 	font-weight: bold;
 	width: max-content;
 	margin: 8px;
+	padding: 0 8px;
+	transition: all var(--sidebar-button-hover-animation) ease-in-out;
 }
 .outline-link:hover {
 	background-color: var(--outline-link-bg-color-hover);
 	color: var(--outline-link-text-color-hover);
+	transition: all var(--sidebar-button-hover-animation) ease-in-out;
 }
