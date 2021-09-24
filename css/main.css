@@ -36,6 +36,11 @@ body {
 	margin-right: 2.5%;
 }
 
+.sidebar-links {
+	position: sticky;
+	top: 0px;
+}
+
 /* Sidebar link */
 .sidebar a {
 	width: 90%;
