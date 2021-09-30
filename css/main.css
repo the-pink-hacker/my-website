@@ -2,6 +2,7 @@
 	--main-bg-color: white;
 	--main-text-color: black;
 	--main-fadein-animation: 1.5s;
+	--main-slidein-animation: 1.0s;
 
 	--sidebar-bg-color: rgb(41, 42, 43);
 	--sidebar-button-bg-color-hover: white;
@@ -97,27 +98,49 @@ body {
 	from { opacity: 0; }
 	to { opacity: 1; }
 }
-
 /* Firefox < 16 */
 @-moz-keyframes fadein {
 	from { opacity: 0; }
 	to { opacity: 1; }
 }
-
 /* Safari, Chrome and Opera > 12.1 */
 @-webkit-keyframes fadein {
 	from { opacity: 0; }
 	to { opacity: 1; }
 }
-
 /* Internet Explorer */
 @-ms-keyframes fadein {
-	from {opacity: 0; }
+	from { opacity: 0; }
 	to { opacity: 1; }
+}
+
+@keyframes slidein {
+	from { padding-top: 5vh; }
+	to { padding-top: initial; }
+}
+/* Firefox < 16 */
+@-moz-keyframes slidein {
+	from { padding-top: 5vh; }
+	to { padding-top: initial; }
+}
+/* Safari, Chrome and Opera > 12.1 */
+@-webkit-keyframes slidein {
+	from { padding-top: 5vh; }
+	to { padding-top: initial; }
+}
+/* Internet Explorer */
+@-ms-keyframes slidein {
+	from { padding-top: 5vh; }
+	to { padding-top: initial; }
 }
 
 .main h1 {
 	text-transform: capitalize;
+	-webkit-animation: slidein var(--main-slidein-animation); /* Safari, Chrome and Opera > 12.1 */
+	-moz-animation: slidein var(--main-slidein-animation); /* Firefox < 16 */
+	-ms-animation: slidein var(--main-slidein-animation); /* Internet Explorer */
+	-o-animation: slidein var(--main-slidein-animation); /* Opera < 12.1 */
+	animation: slidein var(--main-slidein-animation);
 }
 
 .main p {
@@ -155,9 +178,41 @@ header {
 	margin: 8px;
 	padding: 0 8px;
 	transition: all var(--sidebar-button-hover-animation) ease-in-out;
+	-webkit-animation: slidein var(--main-slidein-animation); /* Safari, Chrome and Opera > 12.1 */
+	-moz-animation: slidein var(--main-slidein-animation); /* Firefox < 16 */
+	-ms-animation: slidein var(--main-slidein-animation); /* Internet Explorer */
+	-o-animation: slidein var(--main-slidein-animation); /* Opera < 12.1 */
+	animation: slidein var(--main-slidein-animation);
 }
 .outline-link:hover {
 	background-color: var(--outline-link-bg-color-hover);
 	color: var(--outline-link-text-color-hover);
 	transition: all var(--sidebar-button-hover-animation) ease-in-out;
+}
+
+.icon-image {
+	border-radius: 10px;
+	max-width: 64px;
+	height: auto;
+	display: inline-block;
+}
+
+.icon-link {
+	display: flex;
+  	align-items: center;
+	-webkit-animation: slidein var(--main-slidein-animation); /* Safari, Chrome and Opera > 12.1 */
+	-moz-animation: slidein var(--main-slidein-animation); /* Firefox < 16 */
+	-ms-animation: slidein var(--main-slidein-animation); /* Internet Explorer */
+	-o-animation: slidein var(--main-slidein-animation); /* Opera < 12.1 */
+	animation: slidein var(--main-slidein-animation);
+}
+
+.icon-link a {
+	margin: 16px;
+	text-transform: capitalize;
+	font-size: 2.0em;
+}
+
+.icon-link img {
+	margin: 16px;
 }
