@@ -1,14 +1,15 @@
 :root {
+	--forground-color: rgb(237, 240, 243);
 	--main-bg-color: white;
 	--main-text-color: black;
 	--main-fadein-animation: 1.5s;
 	--main-slidein-animation: 1.0s;
 
-	--sidebar-bg-color: rgb(41, 42, 43);
-	--sidebar-button-bg-color-hover: white;
-	--sidebar-button-text-color: white;
-	--sidebar-button-text-color-hover: black;
-	--sidebar-button-hover-animation: 0.5s;
+	--navbar-bg-color: rgb(41, 42, 43);
+	--navbar-button-bg-color-hover: white;
+	--navbar-button-text-color: white;
+	--navbar-button-text-color-hover: black;
+	--navbar-button-hover-animation: 0.5s;
 
 	--outline-link-text-color-hover: white;
 	--outline-link-bg-color-hover: black;
@@ -18,50 +19,42 @@ body {
 	margin: 0px;
 	height: 100%;
 	width: 100%;
-	background-color: var(--main-bg-color);
-	display: flex;
+	background-color: var(--forground-color);
 }
 
-.sidebar {
-	position: relative;
+.navbar {
 	z-index: 1;
-	min-height: 100vh;
-	height: auto;
-	width: 12.5%;
-	background-color: var(--sidebar-bg-color);
+	height: min-content;
+	width: 100%;
+	background-color: var(--navbar-bg-color);
 	-webkit-touch-callout: none;	/* iOS Safari */
 	-webkit-user-select: none;		/* Safari */
 	-khtml-user-select: none;		/* Konqueror HTML */
 	-moz-user-select: none;			/* Old versions of Firefox */
 	-ms-user-select: none;			/* Internet Explorer/Edge */
 	user-select: none;
-	display: block;
+	text-align: center;
 }
 
-.sidebar-links {
-	position: sticky;
-	top: 0px;
-}
-
-/* Sidebar link */
-.sidebar a {
-	width: 90%;
-	padding: 8px 0 8px 10%;
+/* Navbar link */
+.navbar a {
+	width: max-content;
+	padding: 0px 16px;
 	font-size: 2vw;
 	font-weight: bold;
 	text-transform: capitalize;
 	text-decoration: none;
-	color: var(--sidebar-button-text-color);
-	display: flex;
+	color: var(--navbar-button-text-color);
 	overflow: hidden;
+	display: inline-block;
+	transition: color var(--navbar-button-hover-animation) ease-in-out;
 	z-index: 1;
-	transition: color var(--sidebar-button-hover-animation) ease-in-out;
 }
-.sidebar a:hover {
-	color: var(--sidebar-button-text-color-hover);
-	transition: color var(--sidebar-button-hover-animation) ease-in-out;
+.navbar a:hover {
+	color: var(--navbar-button-text-color-hover);
+	transition: color var(--navbar-button-hover-animation) ease-in-out;
 }
-.sidebar a::before {
+.navbar a::before {
 	height: auto;
 	width: 0%;
 	background-color: transparent;
@@ -75,28 +68,28 @@ body {
 	transform: translateY(-8px);
 	color: transparent;
 	overflow: hidden;
-	transition: all var(--sidebar-button-hover-animation) ease-in-out;
+	transition: all var(--navbar-button-hover-animation) ease-in-out;
 }
-.sidebar a:hover::before {
-	background-color: var(--sidebar-button-bg-color-hover);
-	transition: all var(--sidebar-button-hover-animation) ease-in-out;
+.navbar a:hover::before {
+	background-color: var(--navbar-button-bg-color-hover);
+	transition: all var(--navbar-button-hover-animation) ease-in-out;
 	width: 90%;
 }
 
-.sidebar-button {
+.navbar-button {
 	display: none;
 }
 
-/* Sidebar mobile */
+/* Navbar mobile */
 @media (max-width: 700px) {
-	.sidebar {
+	.navbar {
 		text-align: center;
 		width: 10vw;
 		transition: width 0.5s ease-in-out;
 	}
 
-	/* The button - the box around the sidebar-button-rotate */
-	.sidebar-button {
+	/* The button - the box around the navbar-button-rotate */
+	.navbar-button {
 		position: relative;
 		display: inline-block;
 		margin: 8px 0;
@@ -105,25 +98,25 @@ body {
 	}
 
 	/* Hide default HTML checkbox */
-	.sidebar-button input {
+	.navbar-button input {
 		display: none;
 	}
 
-	/* The sidebar-button-rotate */
-	.sidebar-button-rotate {
+	/* The navbar-button-rotate */
+	.navbar-button-rotate {
 		position: absolute;
 		cursor: pointer;
 		width: 100%;
 		height: 100%;
 		left: 0;
-		background: var(--sidebar-bg-color);
+		background: var(--navbar-bg-color);
 		transition: 0.4s;
 	}
-	.sidebar-button-rotate:hover {
+	.navbar-button-rotate:hover {
 		background: var(--main-bg-color);
 	}
 
-	.sidebar-button-rotate::before {
+	.navbar-button-rotate::before {
 		position: absolute;
 		content: "";
 		left: 12.5%;
@@ -134,27 +127,31 @@ body {
 		transition: 0.4s;
 	}
 
-	input:hover + .sidebar-button-rotate::before {
-		background: var(--sidebar-bg-color);
+	input:hover + .navbar-button-rotate::before {
+		background: var(--navbar-bg-color);
 	}
 
-	input:checked + .sidebar-button-rotate::before {
+	input:checked + .navbar-button-rotate::before {
 		transform: rotate(90deg);
 	}
 }
 
 .main {
-	position: relative;
+	background-color: var(--main-bg-color);
+	position: absolute;
 	min-height: 100%;
-	width: 82.5%;
-	margin-right: 2.5%;
-	margin-left: 2.5%;
+	width: 60vw;
+	margin: 0 20vw;
+	padding: 0 16px;
+	box-sizing: border-box;
 	color: var(--main-text-color);
 	-webkit-animation: fadein var(--main-fadein-animation); /* Safari, Chrome and Opera > 12.1 */
 	-moz-animation: fadein var(--main-fadein-animation); /* Firefox < 16 */
 	-ms-animation: fadein var(--main-fadein-animation); /* Internet Explorer */
 	-o-animation: fadein var(--main-fadein-animation); /* Opera < 12.1 */
 	animation: fadein var(--main-fadein-animation);
+	border-radius: 0 0 16px 16px;
+	box-shadow: 0 0 16px;
 }
 
 @keyframes fadein {
@@ -216,13 +213,13 @@ body {
 	color: var(--main-text-color);
 	font-size: 1em;
 	font-weight: bold;
-	transition: all var(--sidebar-button-hover-animation) ease-in-out;
+	transition: all var(--navbar-button-hover-animation) ease-in-out;
 	text-decoration: none;
 }
 .main * a:hover {
 	background-color: var(--outline-link-bg-color-hover);
 	color: var(--outline-link-text-color-hover);
-	transition: all var(--sidebar-button-hover-animation) ease-in-out;
+	transition: all var(--navbar-button-hover-animation) ease-in-out;
 }
 
 header {
@@ -240,7 +237,7 @@ header {
 	width: max-content;
 	margin: 8px;
 	padding: 0 8px;
-	transition: all var(--sidebar-button-hover-animation) ease-in-out;
+	transition: all var(--navbar-button-hover-animation) ease-in-out;
 	-webkit-animation: slidein var(--main-slidein-animation); /* Safari, Chrome and Opera > 12.1 */
 	-moz-animation: slidein var(--main-slidein-animation); /* Firefox < 16 */
 	-ms-animation: slidein var(--main-slidein-animation); /* Internet Explorer */
@@ -250,7 +247,7 @@ header {
 .outline-link:hover {
 	background-color: var(--outline-link-bg-color-hover);
 	color: var(--outline-link-text-color-hover);
-	transition: all var(--sidebar-button-hover-animation) ease-in-out;
+	transition: all var(--navbar-button-hover-animation) ease-in-out;
 }
 
 .icon-image {
