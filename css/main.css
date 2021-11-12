@@ -6,6 +6,7 @@
 	--size-round-large: 32px;
 	--size-round-medium: 16px;
 	--size-round-small: 8px;
+	--size-round-tiny: 4px;
 	--size-icon-image: 64px;
 	--size-font-large: 3em;
 	--size-font-medium: 2em;
@@ -13,10 +14,10 @@
 	/* Colors */
 	--color-body-background: rgb(27, 27, 27);
 	--color-main-background: rgb(34, 35, 36);
-	--color-main-accent: rgb(182, 183, 184);
-	--color-navbar-background: rgb(36, 36, 36);
+	--color-main-accent: rgb(103, 163, 223);
+	--color-navbar-background: rgb(38, 40, 43);
 	--color-navbar-button-text: rgb(255, 255, 255);
-	--color-navbar-button-hover-background: rgb(46, 46, 46);
+	--color-navbar-button-hover-background: rgb(47, 50, 56);
 	--color-main-text: rgb(255, 255, 255);
 }
 
@@ -46,18 +47,22 @@ body {
 }
 
 .navbar_links > a {
-	max-width: max-content;
+	box-sizing: border-box;
 	margin: 4px;
-	padding: 8px 16px;
+	padding: 4px 16px;
 	flex: 1 1 auto;
 	text-align: center;
 	color: var(--color-navbar-button-text);
 	text-decoration: none;
+	font-weight: bold;
+	font-size: var(--size-font-small);
+	border: 2px solid transparent;
 	border-radius: var(--size-round-small);
 	transition: all var(--time-button-fade);
 }
 .navbar_links > a:hover {
 	background-color: var(--color-navbar-button-hover-background);
+	border: 2px solid var(--color-main-accent);
 }
 
 /* Main Content */
@@ -81,6 +86,34 @@ body {
 	font-size: var(--size-font-medium);
 }
 
+/* Inline Link */
+.main p a {
+	color: var(--color-main-accent);
+	text-decoration: none;
+	font-weight: bold;
+	padding: 0 2px;
+	border-radius: var(--size-round-tiny);
+	transition: all var(--time-button-fade);
+}
+.main a:hover {
+	background-color: var(--color-main-text);
+}
+
+/* Outline Link */
+.main > a {
+	color: var(--color-main-text);
+	text-decoration: none;
+	font-size: var(--size-font-medium);
+	font-weight: bold;
+	transition: all var(--time-button-fade);
+	border-radius: var(--size-round-medium);
+	width: max-content;
+	padding: 4px 8px;
+}
+.main > a:hover {
+	background-color: var(--color-main-accent);
+}
+
 /* Icon Link */
 .icon_link {
 	display: flex;
@@ -100,5 +133,11 @@ body {
 	font-weight: bold;
 	text-decoration: none;
 	color: var(--color-main-text);
-	padding-left: 16px;
+	margin-left: 16px;
+	padding: 4px 8px;
+	border-radius: var(--size-round-small);
+	transition: all var(--time-button-fade);
+}
+.icon_link > a:hover {
+	background-color: var(--color-main-accent);
 }
