@@ -76,6 +76,7 @@ body {
 	border-radius: 0 0 var(--size-round-medium) var(--size-round-medium);
 	display: flex;
 	flex-direction: column;
+	animation: fade_in 1.0s;
 }
 
 .main > header {
@@ -119,13 +120,13 @@ body {
 	display: flex;
 	flex-direction: row;
 	align-items: center;
+	margin-top: 16px;
 }
 
 .icon_link > img {
 	width: var(--size-icon-image);
 	height: var(--size-icon-image);
 	border-radius: var(--size-round-small);
-	animation: fade_in var(--time-fade);
 }
 
 .icon_link > a {
