@@ -1,6 +1,7 @@
 :root {
 	/* Timings */
 	--time-button-fade: 0.25s;
+	--time-slide: 0.5s;
 	--time-fade: 0.5s;
 	/* Sizes */
 	--size-round-large: 32px;
@@ -11,16 +12,19 @@
 	--size-font-large: 3em;
 	--size-font-medium: 2em;
 	--size-font-small: 1em;
+	--size-font-main: 1.5em;
 	--size-blur: 4px;
 	/* Colors */
-	--color-translucent: rgba(0, 0, 0, 0.1);
 	--color-body-background: rgb(27, 27, 27);
 	--color-main-background: rgb(34, 35, 36);
 	--color-main-accent: rgb(103, 163, 223);
+	--color-main-text: rgb(255, 255, 255);
+	--color-main-text-dark: rgb(197, 197, 197);
 	--color-navbar-background: rgb(38, 40, 43);
 	--color-navbar-button-text: rgb(255, 255, 255);
 	--color-navbar-button-hover-background: rgb(47, 50, 56);
-	--color-main-text: rgb(255, 255, 255);
+	/* Fonts */
+	--font-main: "Helvetica";
 }
 
 /* Animations */
@@ -29,12 +33,18 @@
 	to {opacity: 1;}
 }
 
+@keyframes slide_in {
+	from {margin-top: 8px;}
+	to {margin-top: 0px;}
+}
+
 body {
 	display: flex;
 	flex-direction: column;
 	margin: 0;
 	background-color: var(--color-body-background);
 	min-height: 100vh;
+	font-family: var(--font-main);
 }
 
 /* Navbar */
@@ -43,6 +53,12 @@ body {
 	flex-direction: row;
 	background-color: var(--color-navbar-background);
 	align-items: center;
+	-webkit-touch-callout: none; /* iOS Safari */
+	-webkit-user-select: none; /* Safari */
+	-khtml-user-select: none; /* Konqueror HTML */
+	-moz-user-select: none; /* Old versions of Firefox */
+	-ms-user-select: none; /* Internet Explorer/Edge */
+	user-select: none;
 }
 
 .navbar_links {
@@ -69,6 +85,9 @@ body {
 }
 
 /* Dropdown */
+.navbar .dropdown_container {
+	display: flex;
+}
 .navbar .dropdown {
 	color: var(--color-navbar-button-text);
 	text-decoration: none;
@@ -93,21 +112,23 @@ body {
 .navbar .dropdown + .dropdown_content {
 	opacity: 0;
 	visibility: hidden;
+	top: 38px;
 	position: fixed;
+	box-shadow: 0 0 4px;
 	display: flex;
 	flex-direction: column;
-	transition: all var(--time-fade);
 	border-radius: var(--size-round-small);
-	background-color: var(--color-translucent);
-	backdrop-filter: blur(var(--size-blur));
+	background-color: var(--color-navbar-background);
 	overflow: hidden;
 }
-.navbar .dropdown:hover + .dropdown_content, .navbar .dropdown + .dropdown_content:hover {
+.navbar .dropdown_container:hover .dropdown + .dropdown_content, .navbar .dropdown + .dropdown_content:hover {
 	opacity: 1;
 	visibility: visible;
+	animation: slide_in var(--time-slide);
 }
 
 .navbar .dropdown + .dropdown_content a {
+	transition: background-color var(--time-fade);
 	color: var(--color-main-text);
 	padding: 4px 8px;
 	flex: 1 1 auto;
@@ -122,8 +143,9 @@ body {
 .navbar .dropdown + .dropdown_content hr {
 	width: auto;
 	box-sizing: border-box;
-	margin: 2px;
+	margin: 1px 2px;
 	flex: 1 1 auto;
+	color: var(--color-main-text-dark);
 }
 
 /* Main Content */
@@ -142,9 +164,74 @@ body {
 .main > header {
 	display: flex;
 	justify-content: center;
+	flex-direction: column;
+	text-align: center;
 }
 .main > header h1 {
 	font-size: var(--size-font-medium);
+	margin: 16px 0;
+}
+.main > header h2 {
+	font-size: var(--size-font-small);
+	color: var(--color-main-text-dark);
+}
+
+.main p {
+	font-size: var(--size-font-main);
+}
+
+/* Columns */
+.main .columns {
+	display: flex;
+	flex-direction: row;
+	margin: 16px 0;
+}
+
+.main .columns > div {
+	width: 20%;
+	min-width: min-content;
+	padding: 16px;
+	background-color: var(--color-navbar-background);
+	border-radius: var(--size-round-medium);
+	display: flex;
+	flex-direction: column;
+}
+
+/* Project Info */
+#project_info h1 {
+	margin: 8px 0;
+}
+
+#project_info p {
+	margin: 8px 0;
+	font-size: var(--size-font-small);
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	align-items: baseline;
+}
+
+#project_info span, #project_info a {
+	font-weight: bold;
+	background-color: var(--color-main-accent);
+	border-radius: var(--size-round-small);
+	padding: 4px;
+	margin: 4px;
+}
+
+#project_info a {
+	color: var(--color-main-text);
+	text-decoration: none;
+	border: 2px solid var(--color-main-accent);
+	transition: all var(--time-button-fade);
+}
+#project_info a:hover {
+	background-color: var(--color-navbar-button-hover-background);
+}
+
+#project_info hr {
+	width: 100%;
+	flex: 1 1 auto;
 }
 
 /* Inline Link */
