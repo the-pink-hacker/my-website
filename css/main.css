@@ -49,6 +49,7 @@ body {
 
 /* Navbar */
 .navbar {
+	overflow-x: auto;
 	display: flex;
 	flex-direction: row;
 	background-color: var(--color-navbar-background);
@@ -150,6 +151,7 @@ body {
 
 /* Main Content */
 .main {
+	box-sizing: border-box;
 	padding: 0 32px;
 	align-self: center;
 	flex: 1 1 auto;
@@ -288,4 +290,12 @@ body {
 }
 .icon_link > a:hover {
 	background-color: var(--color-main-accent);
+}
+
+/* Mobile Support */
+@media only screen and (max-width: 1000px) {
+	.main {
+		width: 100%;
+		padding: 0 16px;
+	}
 }
