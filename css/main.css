@@ -1,4 +1,6 @@
 :root {
+	font-size: clamp(0.2rem, 2.5vw, 1rem);
+
 	/* Timings */
 	--time-button-fade: 0.25s;
 	--time-slide: 0.5s;
@@ -9,10 +11,10 @@
 	--size-round-small: 8px;
 	--size-round-tiny: 4px;
 	--size-icon-image: 64px;
-	--size-font-large: 3em;
-	--size-font-medium: 2em;
-	--size-font-small: 1em;
-	--size-font-main: 1.5em;
+	--size-font-large: 3rem;
+	--size-font-medium: 2rem;
+	--size-font-small: 1rem;
+	--size-font-main: 1.5rem;
 	--size-blur: 4px;
 	/* Colors */
 	--color-body-background: rgb(27, 27, 27);
@@ -68,21 +70,21 @@ body {
 
 .navbar_links > a {
 	box-sizing: border-box;
-	margin: 4px;
-	padding: 4px 16px;
+	margin: 0.25rem;
+	padding: 0.25rem 1rem;
 	flex: 1 1 auto;
 	text-align: center;
 	color: var(--color-navbar-button-text);
 	text-decoration: none;
 	font-weight: bold;
 	font-size: var(--size-font-small);
-	border: 2px solid transparent;
+	border: 0.125rem solid transparent;
 	border-radius: var(--size-round-small);
-	transition: all var(--time-button-fade);
+	transition: background-color var(--time-button-fade), border var(--time-button-fade);
 }
 .navbar_links > a:hover {
 	background-color: var(--color-navbar-button-hover-background);
-	border: 2px solid var(--color-main-accent);
+	border-color: var(--color-main-accent);
 }
 
 /* Dropdown */
@@ -98,16 +100,17 @@ body {
 	flex: 1 1 auto;
 	text-align: center;
 	box-sizing: border-box;
-	margin: 4px;
-	padding: 4px 16px;
-	border: 2px solid transparent;
+	margin: 0.25rem;
+	padding: 0.25rem 1rem;
+	flex: 1 1 auto;
+	border: 0.125rem solid transparent;
 	border-radius: var(--size-round-small);
-	transition: all var(--time-button-fade);
+	transition: background-color var(--time-button-fade), border var(--time-button-fade);
 	cursor: default;
 }
 .navbar .dropdown:hover {
 	background-color: var(--color-navbar-button-hover-background);
-	border: 2px solid var(--color-main-accent);
+	border-color: var(--color-main-accent);
 }
 
 .navbar .dropdown + .dropdown_content {
@@ -155,7 +158,7 @@ body {
 	padding: 0 32px;
 	align-self: center;
 	flex: 1 1 auto;
-	width: 66%;
+	width: min(75rem, 100%);
 	color: var(--color-main-text);
 	background-color: var(--color-main-background);
 	border-radius: 0 0 var(--size-round-medium) var(--size-round-medium);
@@ -243,7 +246,7 @@ body {
 	font-weight: bold;
 	padding: 0 2px;
 	border-radius: var(--size-round-tiny);
-	transition: all var(--time-button-fade);
+	transition: background-color var(--time-button-fade);
 }
 .main a:hover {
 	background-color: var(--color-main-text);
@@ -290,12 +293,4 @@ body {
 }
 .icon_link > a:hover {
 	background-color: var(--color-main-accent);
-}
-
-/* Mobile Support */
-@media only screen and (max-width: 1000px) {
-	.main {
-		width: 100%;
-		padding: 0 16px;
-	}
 }
