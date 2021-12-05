@@ -1,16 +1,16 @@
 :root {
-	font-size: clamp(0.2rem, 2.5vw, 1rem);
+	font-size: clamp(0.2rem, 1.33vw, 1rem);
 
 	/* Timings */
 	--time-button-fade: 0.25s;
 	--time-slide: 0.5s;
 	--time-fade: 0.5s;
 	/* Sizes */
-	--size-round-large: 32px;
-	--size-round-medium: 16px;
-	--size-round-small: 8px;
-	--size-round-tiny: 4px;
-	--size-icon-image: 64px;
+	--size-round-large: 2rem;
+	--size-round-medium: 1rem;
+	--size-round-small: 0.5rem;
+	--size-round-tiny: 0.25rem;
+	--size-icon-image: 4rem;
 	--size-font-large: 3rem;
 	--size-font-medium: 2rem;
 	--size-font-small: 1rem;
@@ -26,7 +26,7 @@
 	--color-navbar-button-text: rgb(255, 255, 255);
 	--color-navbar-button-hover-background: rgb(47, 50, 56);
 	/* Fonts */
-	--font-main: "Helvetica";
+	--font-main: Helvetica;
 }
 
 /* Animations */
@@ -46,7 +46,11 @@ body {
 	margin: 0;
 	background-color: var(--color-body-background);
 	min-height: 100vh;
-	font-family: var(--font-main);
+	font-family: var(--font-main), Arial, sans-serif;
+}
+
+p {
+	font-family: Arial;
 }
 
 /* Navbar */
@@ -78,7 +82,7 @@ body {
 	text-decoration: none;
 	font-weight: bold;
 	font-size: var(--size-font-small);
-	border: 0.125rem solid transparent;
+	border: 2px solid transparent;
 	border-radius: var(--size-round-small);
 	transition: background-color var(--time-button-fade), border var(--time-button-fade);
 }
@@ -103,7 +107,7 @@ body {
 	margin: 0.25rem;
 	padding: 0.25rem 1rem;
 	flex: 1 1 auto;
-	border: 0.125rem solid transparent;
+	border: 2px solid transparent;
 	border-radius: var(--size-round-small);
 	transition: background-color var(--time-button-fade), border var(--time-button-fade);
 	cursor: default;
@@ -116,7 +120,7 @@ body {
 .navbar .dropdown + .dropdown_content {
 	opacity: 0;
 	visibility: hidden;
-	top: 38px;
+	top: calc(4px + 2.1rem);
 	position: fixed;
 	box-shadow: 0 0 4px;
 	display: flex;
@@ -125,7 +129,8 @@ body {
 	background-color: var(--color-navbar-background);
 	overflow: hidden;
 }
-.navbar .dropdown_container:hover .dropdown + .dropdown_content, .navbar .dropdown + .dropdown_content:hover {
+.navbar .dropdown_container:focus-within .dropdown + .dropdown_content,
+.navbar .dropdown_container:hover .dropdown + .dropdown_content {
 	opacity: 1;
 	visibility: visible;
 	animation: slide_in var(--time-slide);
@@ -147,7 +152,7 @@ body {
 .navbar .dropdown + .dropdown_content hr {
 	width: auto;
 	box-sizing: border-box;
-	margin: 1px 2px;
+	margin: 0.125rem 0.25rem;
 	flex: 1 1 auto;
 	color: var(--color-main-text-dark);
 }
@@ -155,13 +160,12 @@ body {
 /* Main Content */
 .main {
 	box-sizing: border-box;
-	padding: 0 32px;
+	padding: 0 2rem;
 	align-self: center;
 	flex: 1 1 auto;
 	width: min(75rem, 100%);
 	color: var(--color-main-text);
 	background-color: var(--color-main-background);
-	border-radius: 0 0 var(--size-round-medium) var(--size-round-medium);
 	display: flex;
 	flex-direction: column;
 }
@@ -174,7 +178,7 @@ body {
 }
 .main > header h1 {
 	font-size: var(--size-font-medium);
-	margin: 16px 0;
+	margin: 1rem 0;
 }
 .main > header h2 {
 	font-size: var(--size-font-small);
@@ -189,13 +193,18 @@ body {
 .main .columns {
 	display: flex;
 	flex-direction: row;
-	margin: 16px 0;
+	margin: 1rem 0;
+	justify-content: space-between;
+}
+
+.main .columns > * {
+	flex: 1 1 auto;
 }
 
 .main .columns > div {
-	width: 20%;
-	min-width: min-content;
-	padding: 16px;
+	width: 25%;
+	flex: none;
+	padding: 1rem;
 	background-color: var(--color-navbar-background);
 	border-radius: var(--size-round-medium);
 	display: flex;
@@ -203,12 +212,12 @@ body {
 }
 
 /* Project Info */
-#project_info h1 {
-	margin: 8px 0;
+#project_info > h1 {
+	margin: 0.5rem 0;
 }
 
-#project_info p {
-	margin: 8px 0;
+#project_info > p {
+	margin: 0.5rem 0;
 	font-size: var(--size-font-small);
 	display: flex;
 	flex-direction: row;
@@ -216,27 +225,32 @@ body {
 	align-items: baseline;
 }
 
-#project_info span, #project_info a {
-	font-weight: bold;
-	background-color: var(--color-main-accent);
-	border-radius: var(--size-round-small);
-	padding: 4px;
-	margin: 4px;
-}
-
-#project_info a {
-	color: var(--color-main-text);
-	text-decoration: none;
-	border: 2px solid var(--color-main-accent);
-	transition: all var(--time-button-fade);
-}
-#project_info a:hover {
-	background-color: var(--color-navbar-button-hover-background);
-}
-
 #project_info hr {
 	width: 100%;
 	flex: 1 1 auto;
+}
+
+.tag_collection {
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.tag_collection p,
+.tag_collection a {
+	margin: 0.25rem;
+	padding: 0.25rem;
+	color: var(--color-main-text);
+	background-color: var(--color-main-accent);
+	border-radius: var(--size-round-small);
+	border: 2px solid var(--color-main-accent);
+	font-weight: bold;
+	font-size: var(--size-font-small);
+	text-decoration: none;
+	transition: background-color var(--time-button-fade);
+}
+
+.tag_collection a:hover {
+	background-color: var(--color-main-hover-background);
 }
 
 /* Inline Link */
@@ -244,11 +258,11 @@ body {
 	color: var(--color-main-accent);
 	text-decoration: none;
 	font-weight: bold;
-	padding: 0 2px;
+	padding: 0 0.125rem;
 	border-radius: var(--size-round-tiny);
 	transition: background-color var(--time-button-fade);
 }
-.main a:hover {
+.main p a:hover {
 	background-color: var(--color-main-text);
 }
 
@@ -258,10 +272,10 @@ body {
 	text-decoration: none;
 	font-size: var(--size-font-medium);
 	font-weight: bold;
-	transition: all var(--time-button-fade);
+	transition: background-color var(--time-button-fade);
 	border-radius: var(--size-round-medium);
 	width: max-content;
-	padding: 4px 8px;
+	padding: 0.25rem 0.5rem;
 }
 .main > a:hover {
 	background-color: var(--color-main-accent);
@@ -286,10 +300,10 @@ body {
 	font-weight: bold;
 	text-decoration: none;
 	color: var(--color-main-text);
-	margin-left: 16px;
-	padding: 4px 8px;
+	margin-left: 1rem;
+	padding: 0.25rem 0.5rem;
 	border-radius: var(--size-round-small);
-	transition: all var(--time-button-fade);
+	transition: background-color var(--time-button-fade);
 }
 .icon_link > a:hover {
 	background-color: var(--color-main-accent);
